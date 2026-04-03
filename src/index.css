@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@media print {
+  body > *:not(#receipt-print-area) {
+    display: none !important;
+  }
+  #receipt-print-area {
+    display: block !important;
+  }
+}
+
+@theme {
+  --color-primary: #6750A4;
+  --color-primary-light: #EADDFF;
+  --color-background: #E0E5EC;
+  --color-text-primary: #4A5568;
+  --color-text-secondary: #718096;
+  --color-success: #38a169;
+  --color-danger: #e53e3e;
+
+  --shadow-neumorphic: 9px 9px 16px rgb(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+  --shadow-neumorphic-inset: inset 9px 9px 16px rgb(163, 177, 198, 0.6), inset -9px -9px 16px rgba(255, 255, 255, 0.5);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text-primary font-sans;
+  }
+}
+
+@layer utilities {
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+  .animate-pulse-green {
+    animation: pulseGreen 0.8s ease-in-out;
+  }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulseGreen {
+  0% { background-color: transparent; }
+  50% { background-color: rgba(56, 161, 105, 0.2); }
+  100% { background-color: transparent; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+.animate-shake {
+  animation: shake 0.2s ease-in-out 0s 3;
+}
+
